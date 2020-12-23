@@ -3,10 +3,8 @@ import { parse } from "query-string";
 
 function App() {
   useEffect(() => {
-    const cal = document.getElementById("calendar");
     const search = parse<{ sheetUrl: string }>(window.location.search);
-
-    cal?.setAttribute("data-spreadsheet-url", search.sheetUrl);
+    console.log(search);
   }, []);
 
   return (
