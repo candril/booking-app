@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { parse } from "query-string";
 
 function App() {
+  useEffect(() => {
+    const cal = document.getElementById("calendar");
+    const search = parse<{ sheetUrl: string }>(window.location.search);
+
+    cal?.setAttribute("data-spreadsheet-url", search.sheetUrl);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BookingDetailsForm />
     </div>
+  );
+}
+
+function BookingDetailsForm() {
+  return (
+    <form>
+      <input type="hidden" name="SQF_START" />
+      <input type="hidden" name="SQF_END" />
+    </form>
   );
 }
 
