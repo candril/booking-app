@@ -18,8 +18,7 @@ function App() {
   );
 
   async function handleSave(data: { description: string }) {
-    await fetch({
-      url: "/api",
+    await fetch("/api", {
       method: "POST",
       // @ts-ignore
       body: JSON.stringify(data),
